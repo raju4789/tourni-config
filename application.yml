@@ -27,15 +27,20 @@ eureka:
       defaultZone: http://tourni-discovery-service:8761/eureka/
 
 management:
-  tracing:
-    sampling:
-      probability: 1.0
-  endpoint:
+  endpoints:
     web:
       exposure:
-        include: "*"
-    health:
-      show-details: always
+        include: health, info, metrics, prometheus
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+  observations:
+    key-values:
+      application: ${spring.application.name}
+
 
 logging:
   pattern:
