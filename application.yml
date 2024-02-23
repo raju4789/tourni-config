@@ -17,11 +17,14 @@ spring:
 jwt:
   secret: 6a8e1e15d6b7892e8e6f13d7bc54b6c07d398c57923c8b2044973203e7023704
   expirationTime: 86400000
+  tokenPrefix: 'Bearer '
+  authorizationHeaderString: Authorization
+  headerSkipLength: 7
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://tourni-discovery-service:8761/eureka/
 
 management:
   tracing:
