@@ -1,6 +1,4 @@
 spring:
-  config:
-    import: configserver:http://${CONFIG_SERVICE_HOST:localhost}:8888
   format:
     style: google
   jpa:
