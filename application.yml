@@ -21,6 +21,11 @@ jwt:
   authorizationHeaderString: Authorization
   headerSkipLength: 7
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://tourni-discovery-service:8761/eureka/
+      
 management:
   endpoints:
     web:
