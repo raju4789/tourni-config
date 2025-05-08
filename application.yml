@@ -25,7 +25,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://tourni-discovery-service:8761/eureka/
-      
+
 management:
   endpoints:
     web:
@@ -42,15 +42,26 @@ management:
     health:
       probes:
         enabled: true
+      show:
+        details: "always"
   info:
     env:
       enabled: true
   metrics:
     tags:
       application: ${spring.application.name}
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: "http://tempo:9411/api/v2/spans"
 
-
-  logging:
-    pattern:
-      level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
-
+logging:
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
